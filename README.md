@@ -5,19 +5,19 @@
 Le terme “production” fait référence à la phase du cycle de vie du logiciel au cours de laquelle une application ou une API est généralement disponible pour ses consommateurs ou utilisateurs finaux. En revanche, en phase de “développement”, l’écriture et le test de code se poursuite activement et l’application n’est pas ouverte pour un accès externe. Les environnements système correspondants sont respectivement appelés environnement de production et environnement de développement.
 
 Les environnement de développement et de production sont généralement configurés différemment et leurs exigences divergent grandement. Ce qui convient parfaitement en développement peut être inacceptable en production. Par exemple, dans un environnement de développement, vous pouvez souhaiter une consignation prolixe des erreurs en vue du débogage, alors que ce type de comportement présente des risques au niveau de la sécurité en environnement de production. De plus, en environnement de développement, vous n’avez pas à vous soucier de l’extensibilité, de la fiabilité et des performances, tandis que ces éléments sont essentiels en environnement de production.
-
+#
 ### N’utilisez pas de versions obsolètes ou vulnérables d’Express
 
 Les versions 2.x et 3.x d’Express ne sont plus prises en charge. Les problèmes liés à la sécurité et aux performances dans ces versions ne seront pas corrigés. Ne les utilisez pas ! Si vous êtes passé à la version 4, suivez le [guide de migration](http://expressjs.com/fr/guide/migrating-4.html)
 
 Vérifiez également que vous n’utilisez aucune des versions vulnérables d’Express répertoriées sur la page [Mises à jour de sécurité](http://expressjs.com/fr/advanced/security-updates.html). Si tel est le cas, procédez à une mise à jour vers une version stable, de préférence la plus récente.
-
+#
 ### Utilisez TLS
 
 Si votre application traite ou transmet des données sensibles, utilisez [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) (Transport Layer Security) afin de sécuriser la connexion et les données. Cette technologie de l’information chiffre les données avant de les envoyer du client au serveur, ce qui vous préserve des risques d’hameçonnage les plus communs (et faciles). Même si les requêtes Ajax et POST ne sont pas clairement visibles et semblent “masquées” dans les navigateurs, leur trafic réseau n’est pas à l’abri d’une [détection de paquet](https://en.wikipedia.org/wiki/Packet_analyzer) ni des [attaques d’intercepteur](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
 
 Par ailleurs, un outil très pratique, [Let’s Encrypt](https://letsencrypt.org/about/), autorité de certification gratuite, automatisée et ouverte fournie par le groupe de recherche sur la sécurité sur Internet, [ISRG (Internet Security Research Group)](https://letsencrypt.org/isrg/), vous permet de vous procurer gratuitement un certificat TLS.
-
+#
 ### Utilisez Helmet
 
 [Helmet](https://www.npmjs.com/package/helmet) vous aide à protéger votre application de certaines des vulnérabilités bien connues du Web en configurant de manière appropriée des en-têtes HTTP.
@@ -51,7 +51,7 @@ Il est donc conseillé de neutraliser l’en-tête à l’aide de la méthode __
 app.disable('x-powered-by');
 ```
 > Si vous utilisez helmet.js, cette opération s’effectue automatiquement.
-
+#
 ### Utilisez les cookies de manière sécurisée
 
 Pour garantir que les cookies n’ouvrent pas votre application aux attaques, n’utilisez pas le nom du cookie de session par défaut et définissez de manière appropriée des options de sécurité des cookies.
@@ -108,7 +108,7 @@ var expireDate = new Date( Date.now() + 60 * 60 * 1000 ); app.use(session({
   })
 );
 ```
-
+#
 ### Assurez-vous que vos dépendances sont sécurisées
 
 npm est un outil puissant et pratique de gestion des dépendances de votre application. Toutefois, les packages que vous utilisez sont susceptibles de contenir des vulnérabilités critiques en matière de sécurité qui risquent d’affecter également votre application. La sécurité de votre application est aussi forte que le “lien de plus faible” de vos dépendances.
@@ -133,7 +133,7 @@ npm install -g requiresafe
 cd your-app
 requiresafe check
 ```
-
+#
 ### Autres considérations
 Voici d’autres recommandations issues de l’excellente [liste de contrôle de sécurité Node.js](https://blog.risingstack.com/node-js-security-checklist/). Pour tous les détails sur ces recommandations, reportez-vous à cet article de blogue :
 
@@ -144,7 +144,7 @@ Voici d’autres recommandations issues de l’excellente [liste de contrôle de
 - Utilisez l’outil sqlmap à code source ouvert pour détecter les vulnérabilités par injection SQL dans votre application.
 - Utilisez les outils nmap et sslyze pour tester la configuration de vos chiffrements, clés et renégociations SSL, ainsi que la validité de votre certificat.
 - Utilisez safe-regex pour s’assurer que vos expressions régulières ne sont pas exposées à des attaques ReDoS (regular expression denial of service).
-
+#
 ### Eviter les autres vulnérabilités connues
 
 Gardez un oeil sur les recommandations Node Security Project qui peuvent concerner Express ou d’autres utilisés par votre application. En règle générale, Node Security Project est une excellente ressource de connaissances et d’outils sur la sécurité des noeuds.
