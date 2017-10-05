@@ -38,3 +38,10 @@ Installez Helmet comme n’importe quel autre module :
 ```Bash
 npm install --save helmet
 ```
+Puis, pour l’utiliser dans votre code :
+```Javascript
+var helmet = require('helmet');
+app.use(helmet());
+```
+
+
