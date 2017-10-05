@@ -15,3 +15,26 @@ Vérifiez également que vous n’utilisez aucune des versions vulnérables d’
 ### Utilisez TLS
 
 Si votre application traite ou transmet des données sensibles, utilisez [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) (Transport Layer Security) afin de sécuriser la connexion et les données. Cette technologie de l’information chiffre les données avant de les envoyer du client au serveur, ce qui vous préserve des risques d’hameçonnage les plus communs (et faciles). Même si les requêtes Ajax et POST ne sont pas clairement visibles et semblent “masquées” dans les navigateurs, leur trafic réseau n’est pas à l’abri d’une [détection de paquet](https://en.wikipedia.org/wiki/Packet_analyzer) ni des [attaques d’intercepteur](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
+
+Par ailleurs, un outil très pratique, [Let’s Encrypt](https://letsencrypt.org/about/), autorité de certification gratuite, automatisée et ouverte fournie par le groupe de recherche sur la sécurité sur Internet, [ISRG (Internet Security Research Group)](https://letsencrypt.org/isrg/), vous permet de vous procurer gratuitement un certificat TLS.
+
+### Utilisez Helmet
+
+[Helmet](https://www.npmjs.com/package/helmet) vous aide à protéger votre application de certaines des vulnérabilités bien connues du Web en configurant de manière appropriée des en-têtes HTTP.
+
+Helmet n’est actuellement qu’une collection de neuf fonctions middleware plus petites qui définissent des en-têtes HTTP liés à la sécurité :
+
+* ___csp___ définit l’en-tête Content-Security-Policy pour la protection contre les attaques de type cross-site scripting et autres injections intersites.
+* ___hidePoweredBy___ supprime l’en-tête X-Powered-By.
+* ___hpkp___ ajoute des en-têtes Public Key Pinning (épinglage de clé publique) pour la protection contre les attaques d’intercepteur avec de faux certificats.
+* ___hsts___ définit l’en-tête Strict-Transport-Security qui imposer des connexions (HTTP sur SSL/TLS) sécurisées au serveur.
+* ___ieNoOpen___ définit X-Download-Options pour IE8+.
+* ___noCache___ définit des en-têtes Cache-Control et Pragma pour désactiver la mise en cache côté client.
+* ___noSniff___ définit X-Content-Type-Options pour protéger les navigateurs du reniflage du code MIME d’une réponse à partir du type de contenu déclaré.
+* ___frameguard___ définit l’en-tête X-Frame-Options pour fournir une protection clickjacking.
+* ___xssFilter___ définit X-XSS-Protection afin d’activer le filtre de script intersites (XSS) dans les navigateurs Web les plus récents.
+
+Installez Helmet comme n’importe quel autre module :
+```Npm
+npm install --save helmet
+
