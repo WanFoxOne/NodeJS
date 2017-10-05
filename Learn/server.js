@@ -1,6 +1,7 @@
 console.log("Initialisation ... | " + Date.now());
 
 // https://openclassrooms.com/courses/des-applications-ultra-rapides-avec-node-js/tp-la-todo-list
+// http://expressjs.com/fr/advanced/best-practice-security.html
 
 // Librairies
 const express = require('express');
