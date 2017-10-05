@@ -18,7 +18,7 @@ app.set("twig options", {
 
 app.get('/', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
-    res.end('Accueil');
+    res.end('Accueil du site');
 });
 
 app.get('/login', function(req, res) {
