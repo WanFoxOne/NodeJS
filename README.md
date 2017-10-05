@@ -44,4 +44,23 @@ var helmet = require('helmet');
 app.use(helmet());
 ```
 
+__Désactivez au minimum l’en-tête X-Powered-By__
+Si vous ne voulez pas utiliser Helmet, désactivez au minimum l’en-tête X-Powered-By. Les intrus peuvent utiliser cet en-tête (activé par défaut) afin de détecter les applications qui exécutent Express et lancer ensuite des attaques spécifiquement ciblées.
+Il est donc conseillé de neutraliser l’en-tête à l’aide de la méthode __app.disable()__ comme suit :
+```Javascript
+app.disable('x-powered-by');
+```
+> Si vous utilisez helmet.js, cette opération s’effectue automatiquement.
+
+### Utilisez les cookies de manière sécurisée
+
+Pour garantir que les cookies n’ouvrent pas votre application aux attaques, n’utilisez pas le nom du cookie de session par défaut et définissez de manière appropriée des options de sécurité des cookies.
+
+Il existe deux modules principaux de session de cookie de middleware :
+
+* ___express-session___ qui remplace le middleware express.session intégré à Express 3.x.
+* ___cookie-session___ qui remplace le middleware express.cookieSession intégré à Express 3.x.
+
+La principale différence entre ces deux modules tient à la manière dont ils sauvegardent les données de session des cookies. Le middleware [express-session](https://www.npmjs.com/package/express-session) stocke les données de session sur le serveur ; il ne sauvegarde que l’ID session dans le cookie lui-même, mais pas les données de session. Par défaut, il utilise le stockage en mémoire et n’est pas conçu pour un environnement de production. En production, vous devrez configurer un magasin de sessions évolutif (voir la liste des [magasins de sessions compatibles](https://github.com/expressjs/session#compatible-session-stores)).
+
 
