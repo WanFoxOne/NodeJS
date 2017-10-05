@@ -35,6 +35,6 @@ Helmet n’est actuellement qu’une collection de neuf fonctions middleware plu
 * ___xssFilter___ définit X-XSS-Protection afin d’activer le filtre de script intersites (XSS) dans les navigateurs Web les plus récents.
 
 Installez Helmet comme n’importe quel autre module :
-```Node
+```Bash
 npm install --save helmet
 ```
